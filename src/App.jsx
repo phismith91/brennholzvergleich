@@ -494,9 +494,9 @@ export default function App() {
             </svg>
           </div>
           <div>
-            <div className="logo-text" aria-hidden="true">Brennholz<span>Vergleich</span></div>
+            <div className="logo-text" aria-hidden="true">Holzpreis<span>Vergleich</span></div>
             <div className="logo-sub">Angebote normalisiert vergleichen</div>
-            <h1 className="sr-only">BrennholzVergleich – Kaminholz-Angebote fair vergleichen</h1>
+            <h1 className="sr-only">HolzpreisVergleich – Brennholz-Angebote fair vergleichen</h1>
           </div>
         </div>
       </header>
@@ -1167,7 +1167,7 @@ export default function App() {
             <span>
               Regionale Anbieter liefern oft günstiger und mit kürzeren Wegen als überregionale Händler.
               <strong> Hervorgehobene Einträge</strong> sind bezahlte Empfehlungen – alle anderen Angaben sind kostenlos und redaktionell gepflegt.
-              Lieferant fehlt? <a href="mailto:hallo@brennholzvergleich.de" style={{ color: "var(--larch)" }}>Eintrag anfragen</a>.
+              Lieferant fehlt? <a href="mailto:hallo@holzpreisvergleich.de" style={{ color: "var(--larch)" }}>Eintrag anfragen</a>.
             </span>
           </div>
 
