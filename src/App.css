@@ -116,6 +116,8 @@ html { scroll-behavior: smooth; }
   /* Geometry */
   --r-sm:  2px;
   --r:     3px;
+  --r-md:  6px;
+  --r-lg: 10px;
 
   /* Spacing scale (4pt) */
   --sp-1:  4px;
@@ -147,7 +149,8 @@ html { scroll-behavior: smooth; }
 
 /* ─── Tabs ───────────────────────────────────────────────────────────────────── */
 .tabs       { background: var(--pine-d); border-bottom: 1px solid var(--white-08); position: sticky; top: 52px; z-index: 100; }
-.tabs-inner { display: flex; padding: 0 var(--sp-6); max-width: 1020px; margin: 0 auto; }
+.tabs-inner { display: flex; padding: 0 var(--sp-6); max-width: 1020px; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.tabs-inner::-webkit-scrollbar { display: none; }
 /* [adapt] min-height 44px für Touch-Target */
 .tab {
   padding: 0 var(--sp-4);
@@ -596,6 +599,9 @@ select.input {
   padding-top: var(--sp-3);
   border-top: 1px solid var(--border);
 }
+.supplier-card--featured .supplier-footer {
+  border-top-color: var(--border-warm);
+}
 .supplier-meta {
   display: flex;
   flex-wrap: wrap;
@@ -646,7 +652,10 @@ select.input {
   color: var(--pine-text);
   opacity: 0.75;
   transition: opacity 150ms;
-  padding: 0;
+  padding: var(--sp-2) var(--sp-1);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   letter-spacing: 0.02em;
 }
 .footer-link:hover { opacity: 1; }
@@ -663,7 +672,7 @@ select.input {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(26, 26, 24, 0.55);
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
   backdrop-filter: blur(2px);
   z-index: 100;
   display: flex;
@@ -682,7 +691,7 @@ select.input {
   max-height: 85dvh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+  box-shadow: 0 24px 48px color-mix(in srgb, var(--ink) 20%, transparent);
 }
 .modal-header {
   display: flex;
@@ -700,8 +709,8 @@ select.input {
   margin: 0;
 }
 .modal-close {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--border);
   background: none;
@@ -713,6 +722,7 @@ select.input {
   justify-content: center;
   flex-shrink: 0;
   transition: background 150ms, color 150ms;
+  margin: -6px -6px -6px 0;
 }
 .modal-close:hover { background: var(--border); color: var(--ink); }
 .modal-body {
@@ -793,8 +803,10 @@ select.input {
 }
 .em-bar-fill {
   height: 100%;
+  width: 100%;
   border-radius: 3px;
-  transition: width 400ms ease-out;
+  transform-origin: left;
+  transition: transform 400ms ease-out;
 }
 .em-bar-val {
   font-size: 12px;

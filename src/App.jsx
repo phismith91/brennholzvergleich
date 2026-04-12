@@ -313,14 +313,30 @@ function PositionBlock({ pos, posIdx, offerId, canRemove, onUpdate, onRemove }) 
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
 
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 function Modal({ id, title, onClose, children }) {
-  const firstFocusRef = useRef(null);
-  const prevFocusRef  = useRef(null);
+  const modalRef     = useRef(null);
+  const prevFocusRef = useRef(null);
 
   useEffect(() => {
     prevFocusRef.current = document.activeElement;
-    firstFocusRef.current?.focus();
-    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    // Focus first focusable element on open
+    const focusable = modalRef.current?.querySelectorAll(FOCUSABLE);
+    focusable?.[0]?.focus();
+
+    const onKey = (e) => {
+      if (e.key === "Escape") { onClose(); return; }
+      if (e.key !== "Tab") return;
+      const all = Array.from(modalRef.current?.querySelectorAll(FOCUSABLE) ?? []);
+      if (all.length === 0) { e.preventDefault(); return; }
+      const first = all[0], last = all[all.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
@@ -331,8 +347,9 @@ function Modal({ id, title, onClose, children }) {
   }, [onClose]);
 
   return (
-    <div className="modal-backdrop" onClick={onClose} aria-hidden="false">
+    <div className="modal-backdrop" onClick={onClose}>
       <div
+        ref={modalRef}
         className="modal"
         role="dialog"
         aria-modal="true"
@@ -345,7 +362,6 @@ function Modal({ id, title, onClose, children }) {
             className="modal-close"
             onClick={onClose}
             aria-label="Schließen"
-            ref={firstFocusRef}
           >×</button>
         </div>
         <div className="modal-body">{children}</div>
@@ -796,8 +812,8 @@ export default function App() {
 
           {/* Filter */}
           <div className="htable-filters" role="group" aria-label="Holzarten filtern">
-            <div className="filter-group">
-              <span className="filter-label">Typ</span>
+            <div className="filter-group" role="group" aria-label="Nach Holztyp filtern">
+              <span className="filter-label" aria-hidden="true">Typ</span>
               {["Alle", "Hartholz", "Weichholz"].map(v => (
                 <button
                   key={v}
@@ -809,8 +825,8 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <div className="filter-group">
-              <span className="filter-label">Funkenflug</span>
+            <div className="filter-group" role="group" aria-label="Nach Funkenflug filtern">
+              <span className="filter-label" aria-hidden="true">Funkenflug</span>
               {["Alle", "Gering", "Mittel", "Hoch", "Sehr hoch"].map(v => (
                 <button
                   key={v}
@@ -982,7 +998,7 @@ export default function App() {
               <div key={key} className="em-bar-row">
                 <div className="em-bar-label">{label}</div>
                 <div className="em-bar-track" aria-hidden="true">
-                  <div className="em-bar-fill" style={{ width: `${(val / 3.00) * 100}%`, background: color }} />
+                  <div className="em-bar-fill" style={{ transform: `scaleX(${val / 3.00})`, background: color }} />
                 </div>
                 <div className="em-bar-val mono" style={{ color }}>{val.toFixed(2)}&thinsp;g/kWh</div>
               </div>
@@ -1185,8 +1201,8 @@ export default function App() {
                 style={{ maxWidth: 280 }}
               />
             </div>
-            <div className="filter-group">
-              <span className="filter-label">Holzart</span>
+            <div className="filter-group" role="group" aria-label="Nach Holzart filtern">
+              <span className="filter-label" aria-hidden="true">Holzart</span>
               {["Alle", "Buche", "Eiche", "Birke", "Kiefer"].map(v => (
                 <button
                   key={v}
