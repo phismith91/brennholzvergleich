@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+
+  <title>Festmeter Raummeter Schüttraummeter umrechnen – Kostenloser Rechner</title>
+  <meta name="description" content="Kostenloses Tool: Festmeter (fm), Raummeter (rm) und Schüttraummeter (srm) sofort umrechnen. Mit Erklärung der Einheiten und Tabelle für Brennholz-Käufer." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://holzpreisvergleich.de/umrechner/" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://holzpreisvergleich.de/umrechner/" />
+  <meta property="og:title"       content="Festmeter Raummeter umrechnen – Kostenloser Rechner" />
+  <meta property="og:description" content="fm, rm und srm sofort umrechnen. Inkl. Erklärung für Brennholz-Käufer." />
+  <meta property="og:locale"      content="de_DE" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪵</text></svg>" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Festmeter, Raummeter und Schüttraummeter umrechnen",
+    "description": "Anleitung und Rechner zur Umrechnung der gängigen Brennholz-Einheiten fm, rm und srm.",
+    "url": "https://holzpreisvergleich.de/umrechner/",
+    "step": [
+      { "@type": "HowToStep", "name": "Menge eingeben", "text": "Geben Sie Ihre Menge und die bekannte Einheit ein." },
+      { "@type": "HowToStep", "name": "Einheit wählen", "text": "Wählen Sie Festmeter, Raummeter oder Schüttraummeter." },
+      { "@type": "HowToStep", "name": "Ergebnis ablesen", "text": "Alle drei Einheiten werden sofort berechnet." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist ein Festmeter (fm)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ein Festmeter ist ein Kubikmeter reines Holz ohne Zwischenräume. Er ist die präziseste Einheit beim Holzkauf und enthält rund 0,7 Schüttraummeter Holzsubstanz." }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist ein Raummeter (rm)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ein Raummeter (auch Ster) ist ein Kubikmeter gestapeltes Holz inklusive der Luftzwischenräume. 1 Raummeter entspricht je nach Schnittstärke etwa 0,65–0,75 Festmeter." }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist ein Schüttraummeter (srm)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ein Schüttraummeter ist ein Kubikmeter lose geschüttetes Holz. Er enthält mehr Luft als der Raummeter und entspricht etwa 0,5 Festmeter." }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie rechne ich Raummeter in Festmeter um?",
+        "acceptedAnswer": { "@type": "Answer", "text": "1 Raummeter (rm) = ca. 0,714 Festmeter (fm). Umgekehrt: 1 Festmeter = 1,4 Raummeter. Der genaue Faktor hängt von der Schnittstärke und Holzart ab." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    @font-face { font-family:'Barlow'; font-weight:400; font-display:swap; src:url('/fonts/barlow-400.woff2') format('woff2'); }
+    @font-face { font-family:'Barlow'; font-weight:600; font-display:swap; src:url('/fonts/barlow-600.woff2') format('woff2'); }
+    @font-face { font-family:'Barlow Condensed'; font-weight:700; font-display:swap; src:url('/fonts/barlow-cond-700.woff2') format('woff2'); }
+    @font-face { font-family:'Fira Code'; font-weight:400; font-display:swap; src:url('/fonts/fira-code-400.woff2') format('woff2'); }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pine:#2D4A3E; --pine-d:#1E3329; --pine-text:#B2C9C2; --pine-10:color-mix(in srgb,#2D4A3E 10%,transparent);
+      --paper:#F7F4EF; --larch:#C4893A; --larch-d:#8B5E1A; --larch-l:#FDF3E7;
+      --ink:#1A1A18; --ink2:#3D3D3A; --ink3:#6B6B67;
+      --surface:#FFFFFF; --border:#D8D4CC; --border-warm:#E8D5B4;
+      --sans:'Barlow',system-ui,sans-serif; --cond:'Barlow Condensed',sans-serif; --mono:'Fira Code',monospace;
+      --r-sm:4px; --r-md:8px; --r-lg:12px;
+    }
+
+    body { font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--paper); line-height:1.6; }
+
+    a { color:var(--larch); }
+    a:hover { color:var(--larch-d); }
+
+    .inner { max-width:720px; margin:0 auto; padding:0 20px; }
+
+    /* Header */
+    .header { background:var(--pine); padding:14px 0; }
+    .header-inner { display:flex; align-items:center; gap:12px; }
+    .logo-mark { width:32px; height:32px; background:rgba(255,255,255,.12); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .logo-text { font-family:var(--cond); font-weight:700; font-size:18px; color:#fff; letter-spacing:.01em; }
+    .logo-text span { color:#C4893A; }
+    .logo-sub { font-size:11px; color:var(--pine-text); margin-top:1px; }
+    .back-link { margin-left:auto; font-size:12px; color:var(--pine-text); text-decoration:none; opacity:.8; white-space:nowrap; }
+    .back-link:hover { opacity:1; color:#fff; }
+
+    /* Main */
+    main { padding:36px 0 56px; }
+
+    h1 { font-family:var(--cond); font-size:clamp(22px,5vw,30px); font-weight:700; color:var(--ink); line-height:1.2; margin-bottom:10px; }
+    .lead { font-size:15px; color:var(--ink2); margin-bottom:32px; max-width:60ch; }
+
+    h2 { font-family:var(--cond); font-size:18px; font-weight:700; color:var(--ink); margin:36px 0 14px; padding-bottom:6px; border-bottom:2px solid var(--pine); display:inline-block; }
+
+    /* Rechner */
+    .rechner-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:24px; margin-bottom:32px; }
+    .rechner-inputs { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+    label.lbl { display:block; font-size:12px; font-weight:600; color:var(--ink3); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; }
+    input[type=number], select { width:100%; padding:10px 12px; border:1.5px solid var(--border); border-radius:var(--r-sm); font-family:var(--mono); font-size:15px; color:var(--ink); background:var(--surface); outline:none; }
+    input[type=number]:focus, select:focus { border-color:var(--pine); }
+    .ergebnis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .erg-box { background:var(--paper); border:1px solid var(--border); border-radius:var(--r-md); padding:14px 16px; text-align:center; }
+    .erg-box.highlight { background:var(--larch-l); border-color:var(--border-warm); }
+    .erg-label { font-size:11px; color:var(--ink3); font-weight:600; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; }
+    .erg-value { font-family:var(--mono); font-size:20px; font-weight:700; color:var(--pine); }
+    .erg-unit { font-size:11px; color:var(--ink3); margin-top:2px; }
+
+    /* Tabelle */
+    .tbl-wrap { overflow-x:auto; margin-bottom:32px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    thead tr { background:var(--pine); color:#fff; }
+    th { padding:10px 14px; text-align:left; font-weight:600; font-size:12px; letter-spacing:.05em; text-transform:uppercase; }
+    td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--ink2); }
+    tr:last-child td { border-bottom:none; }
+    tr:hover td { background:var(--paper); }
+    .mono { font-family:var(--mono); font-weight:600; color:var(--ink); }
+
+    /* Callout */
+    .callout { display:flex; gap:12px; background:var(--larch-l); border:1px solid var(--border-warm); border-radius:var(--r-md); padding:14px 16px; font-size:13px; color:var(--ink2); line-height:1.6; margin-bottom:24px; }
+
+    /* FAQ */
+    .faq { display:flex; flex-direction:column; gap:0; }
+    details { border-bottom:1px solid var(--border); }
+    details:first-child { border-top:1px solid var(--border); }
+    summary { padding:14px 0; cursor:pointer; font-weight:600; font-size:14px; color:var(--ink); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+    summary::after { content:'＋'; color:var(--larch); font-size:16px; flex-shrink:0; }
+    details[open] summary::after { content:'－'; }
+    details p { font-size:13px; color:var(--ink2); line-height:1.7; padding-bottom:14px; }
+
+    /* CTA */
+    .cta-box { background:var(--pine); border-radius:var(--r-lg); padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:40px; }
+    .cta-text { color:#fff; font-size:15px; font-weight:500; }
+    .cta-text strong { display:block; font-family:var(--cond); font-size:20px; font-weight:700; margin-bottom:4px; }
+    .cta-btn { display:inline-flex; align-items:center; padding:11px 22px; background:var(--larch); color:#fff; font-weight:600; font-size:14px; border-radius:var(--r-sm); text-decoration:none; white-space:nowrap; flex-shrink:0; }
+    .cta-btn:hover { background:var(--larch-d); color:#fff; }
+
+    /* Footer */
+    .footer { background:var(--pine-d); color:var(--pine-text); padding:16px 0; font-size:11px; text-align:center; letter-spacing:.02em; }
+
+    @media(max-width:520px) {
+      .rechner-inputs { grid-template-columns:1fr; }
+      .ergebnis-grid { grid-template-columns:1fr; }
+      .cta-box { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="inner header-inner">
+      <div class="logo-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C9 5.5 7 8 7 11a5 5 0 0010 0c0-3-2-5.5-5-9z" fill="white" fill-opacity=".9"/>
+          <path d="M12 10c-1 2-2 3-2 4.5a2 2 0 004 0C14 13 13 12 12 10z" fill="white" fill-opacity=".5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-text">Holzpreis<span>Vergleich</span></div>
+        <div class="logo-sub">Angebote normalisiert vergleichen</div>
+      </div>
+      <a class="back-link" href="/">← Zum Preisrechner</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="inner">
+
+      <h1>Festmeter, Raummeter &amp; Schüttraummeter umrechnen</h1>
+      <p class="lead">
+        Beim Brennholzkauf begegnen Ihnen drei verschiedene Einheiten.
+        Unser Rechner wandelt fm, rm und srm sofort ineinander um –
+        damit Sie Angebote fair vergleichen können.
+      </p>
+
+      <!-- Rechner -->
+      <div class="rechner-card">
+        <div class="rechner-inputs">
+          <div>
+            <label class="lbl" for="menge">Menge</label>
+            <input type="number" id="menge" value="5" min="0.01" step="0.5" inputmode="decimal" />
+          </div>
+          <div>
+            <label class="lbl" for="einheit">Einheit</label>
+            <select id="einheit">
+              <option value="fm">Festmeter (fm)</option>
+              <option value="rm" selected>Raummeter (rm)</option>
+              <option value="srm">Schüttraummeter (srm)</option>
+            </select>
+          </div>
+        </div>
+        <div class="ergebnis-grid" id="ergebnis" aria-live="polite" aria-atomic="true">
+          <div class="erg-box" id="box-fm">
+            <div class="erg-label">Festmeter</div>
+            <div class="erg-value" id="val-fm">—</div>
+            <div class="erg-unit">fm</div>
+          </div>
+          <div class="erg-box" id="box-rm">
+            <div class="erg-label">Raummeter</div>
+            <div class="erg-value" id="val-rm">—</div>
+            <div class="erg-unit">rm</div>
+          </div>
+          <div class="erg-box" id="box-srm">
+            <div class="erg-label">Schüttraummeter</div>
+            <div class="erg-value" id="val-srm">—</div>
+            <div class="erg-unit">srm</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span style="color:#C4893A;font-weight:700;flex-shrink:0;margin-top:1px">i</span>
+        <span>
+          Die Standardfaktoren <strong>1 fm = 1,4 rm = 2,0 srm</strong> gelten für Scheitholz mit ca. 25–33 cm Länge.
+          Bei sehr langen oder unregelmäßigen Scheiten kann der Raummeter-Faktor auf 1,3–1,5 abweichen – fragen Sie Ihren Lieferanten.
+        </span>
+      </div>
+
+      <!-- Tabelle -->
+      <h2>Umrechnungstabelle</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Festmeter (fm)</th>
+              <th>Raummeter (rm)</th>
+              <th>Schüttraummeter (srm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">1 fm</td><td class="mono">1,4 rm</td><td class="mono">2,0 srm</td></tr>
+            <tr><td class="mono">2 fm</td><td class="mono">2,8 rm</td><td class="mono">4,0 srm</td></tr>
+            <tr><td class="mono">3 fm</td><td class="mono">4,2 rm</td><td class="mono">6,0 srm</td></tr>
+            <tr><td class="mono">5 fm</td><td class="mono">7,0 rm</td><td class="mono">10,0 srm</td></tr>
+            <tr><td class="mono">10 fm</td><td class="mono">14,0 rm</td><td class="mono">20,0 srm</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Erklärung -->
+      <h2>Was bedeuten die Einheiten?</h2>
+      <div class="tbl-wrap" style="margin-bottom:12px">
+        <table>
+          <thead>
+            <tr><th>Einheit</th><th>Abk.</th><th>Was ist enthalten?</th><th>Typische Verwendung</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Festmeter</strong></td>
+              <td class="mono">fm</td>
+              <td>1 m³ reines Holz – ohne Luftzwischenräume</td>
+              <td>Professioneller Holzhandel, Forstbetriebe</td>
+            </tr>
+            <tr>
+              <td><strong>Raummeter</strong></td>
+              <td class="mono">rm</td>
+              <td>1 m³ ordentlich gestapeltes Holz – inkl. Luftspalten</td>
+              <td>Kleinmengen, privater Kauf, Hof-/Straßenverkauf</td>
+            </tr>
+            <tr>
+              <td><strong>Schüttraummeter</strong></td>
+              <td class="mono">srm</td>
+              <td>1 m³ locker geschüttetes Holz – viel Luft</td>
+              <td>Lieferwagen-Ladungen, Palettenlieferungen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ -->
+      <h2>Häufige Fragen</h2>
+      <div class="faq">
+        <details>
+          <summary>Warum weicht mein Lieferant vom Standardfaktor ab?</summary>
+          <p>Der Faktor 1 fm = 1,4 rm gilt für Scheitholz mit ca. 25–33 cm Länge. Kürzere Scheite (z.B. 25 cm) stapeln dichter → Faktor näher an 1,3. Sehr lange oder unregelmäßige Scheite → Faktor bis 1,5. Bei Unsicherheit: Lieferanten direkt nach dem verwendeten Faktor fragen.</p>
+        </details>
+        <details>
+          <summary>Welche Einheit ist für den Preisvergleich am besten?</summary>
+          <p>Der <strong>Festmeter (fm)</strong> ist die fairste Vergleichseinheit, weil er reines Holzvolumen misst – unabhängig davon, wie dicht gestapelt wurde. Unser <a href="/">Preisrechner</a> normalisiert alle Einheiten automatisch auf €/fm.</p>
+        </details>
+        <details>
+          <summary>Wie viel Heizenergie steckt in einem Festmeter?</summary>
+          <p>Das hängt von der Holzart und Trockenheit ab. Buche ofenfertig liefert ca. 2.100 kWh/fm, Fichte nur ca. 1.500 kWh/fm. Frisches Holz hat durch den Wasseranteil 30–40 % weniger Heizwert. Unser <a href="/">Rechner</a> berücksichtigt Holzart und Trockenheit automatisch beim €/kWh-Vergleich.</p>
+        </details>
+        <details>
+          <summary>Wie viel Festmeter brauche ich pro Winter?</summary>
+          <p>Als Faustregel: Ein gut gedämmtes Einfamilienhaus mit Kaminofen als Zusatzheizung verbraucht ca. 3–6 fm pro Saison. Als alleinige Heizung eher 8–15 fm, je nach Hausgröße, Dämmung und Holzart.</p>
+        </details>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-box">
+        <div class="cta-text">
+          <strong>Jetzt Angebote vergleichen</strong>
+          Menge umgerechnet? Prüfen Sie, welches Angebot wirklich günstig ist – normalisiert auf €/fm und €/kWh.
+        </div>
+        <a class="cta-btn" href="/">Zum Preisrechner →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="inner">
+      © <script>document.write(new Date().getFullYear())</script> holzpreisvergleich.de ·
+      <a href="/" style="color:inherit">Preisrechner</a> ·
+      Angaben ohne Gewähr
+    </div>
+  </footer>
+
+  <script>
+    const RM_PER_FM  = 1.4;
+    const SRM_PER_FM = 2.0;
+
+    function rechne() {
+      const menge   = parseFloat(document.getElementById('menge').value);
+      const einheit = document.getElementById('einheit').value;
+      if (!menge || menge <= 0) {
+        ['fm','rm','srm'].forEach(u => { document.getElementById('val-'+u).textContent = '—'; });
+        return;
+      }
+
+      let fm;
+      if      (einheit === 'fm')  fm = menge;
+      else if (einheit === 'rm')  fm = menge / RM_PER_FM;
+      else                        fm = menge / SRM_PER_FM;
+
+      const rm  = fm * RM_PER_FM;
+      const srm = fm * SRM_PER_FM;
+
+      const fmt = n => n.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('val-fm').textContent  = fmt(fm);
+      document.getElementById('val-rm').textContent  = fmt(rm);
+      document.getElementById('val-srm').textContent = fmt(srm);
+
+      // Eingabe-Box hervorheben
+      ['fm','rm','srm'].forEach(u => {
+        document.getElementById('box-'+u).classList.toggle('highlight', u === einheit);
+      });
+    }
+
+    document.getElementById('menge').addEventListener('input', rechne);
+    document.getElementById('einheit').addEventListener('change', rechne);
+    rechne();
+  </script>
+
+</body>
+</html>
