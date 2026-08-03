@@ -22,42 +22,10 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "Festmeter, Raummeter und Schüttraummeter umrechnen",
-    "description": "Anleitung und Rechner zur Umrechnung der gängigen Brennholz-Einheiten fm, rm und srm.",
-    "url": "https://holzpreisvergleich.de/umrechner/",
-    "step": [
-      { "@type": "HowToStep", "name": "Menge eingeben", "text": "Geben Sie Ihre Menge und die bekannte Einheit ein." },
-      { "@type": "HowToStep", "name": "Einheit wählen", "text": "Wählen Sie Festmeter, Raummeter oder Schüttraummeter." },
-      { "@type": "HowToStep", "name": "Ergebnis ablesen", "text": "Alle drei Einheiten werden sofort berechnet." }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Was ist ein Festmeter (fm)?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ein Festmeter ist ein Kubikmeter reines Holz ohne Zwischenräume. Er ist die präziseste Einheit beim Holzkauf und enthält rund 0,7 Schüttraummeter Holzsubstanz." }
-      },
-      {
-        "@type": "Question",
-        "name": "Was ist ein Raummeter (rm)?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ein Raummeter (auch Ster) ist ein Kubikmeter gestapeltes Holz inklusive der Luftzwischenräume. 1 Raummeter entspricht je nach Schnittstärke etwa 0,65–0,75 Festmeter." }
-      },
-      {
-        "@type": "Question",
-        "name": "Was ist ein Schüttraummeter (srm)?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ein Schüttraummeter ist ein Kubikmeter lose geschüttetes Holz. Er enthält mehr Luft als der Raummeter und entspricht etwa 0,5 Festmeter." }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie rechne ich Raummeter in Festmeter um?",
-        "acceptedAnswer": { "@type": "Answer", "text": "1 Raummeter (rm) = ca. 0,714 Festmeter (fm). Umgekehrt: 1 Festmeter = 1,4 Raummeter. Der genaue Faktor hängt von der Schnittstärke und Holzart ab." }
-      }
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://holzpreisvergleich.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Umrechner" }
     ]
   }
   </script>
@@ -95,6 +63,12 @@
     .logo-sub { font-size:11px; color:var(--pine-text); margin-top:1px; }
     .back-link { margin-left:auto; font-size:12px; color:var(--pine-text); text-decoration:none; opacity:.8; white-space:nowrap; }
     .back-link:hover { opacity:1; color:#fff; }
+
+    /* Breadcrumb */
+    .breadcrumb { font-size:12px; color:var(--ink3); padding:12px 0 0; }
+    .breadcrumb a { color:var(--ink3); text-decoration:none; }
+    .breadcrumb a:hover { color:var(--larch); }
+    .breadcrumb span { margin:0 5px; }
 
     /* Main */
     main { padding:36px 0 56px; }
@@ -177,7 +151,13 @@
   <main>
     <div class="inner">
 
-      <h1>Festmeter, Raummeter &amp; Schüttraummeter umrechnen</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Startseite</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Umrechner</span>
+      </nav>
+
+      <h1 style="margin-top:20px">Festmeter, Raummeter &amp; Schüttraummeter umrechnen</h1>
       <p class="lead">
         Beim Brennholzkauf begegnen Ihnen drei verschiedene Einheiten.
         Unser Rechner wandelt fm, rm und srm sofort ineinander um –
