@@ -1,0 +1,10 @@
+# HolzpreisVergleich
+
+> Kostenloser Brennholz-Preisrechner: vergleicht Angebote normalisiert auf €/Festmeter und €/kWh, inklusive Lieferkosten, Holzart und Holzfeuchte-Korrektur. Kein Login, kein Tracking, kein Backend.
+
+## Seiten
+
+- [Preisrechner](https://holzpreisvergleich.de/): Angebote vergleichen, Holzarten-Referenz, Emissionen/CO₂-Vergleich
+- [Umrechner](https://holzpreisvergleich.de/umrechner/): Festmeter / Raummeter / Schüttraummeter umrechnen
+- [Holzarten & Heizwerte](https://holzpreisvergleich.de/holzarten/): Heizwerte, Brenndauer und Funkenflug aller gängigen Brennholzarten
+- [Ratgeber](https://holzpreisvergleich.de/ratgeber/): Brennholz-Preise, Kauftipps und Hintergrundwissen

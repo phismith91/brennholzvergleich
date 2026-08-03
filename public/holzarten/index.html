@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+
+  <title>Holzarten & Heizwerte – Buche, Eiche, Birke im Vergleich</title>
+  <meta name="description" content="Heizwerte aller gängigen Brennholzarten im Vergleich: Buche, Eiche, Esche, Birke, Fichte u.a. – kWh/fm, Brenndauer, Funkenflug und Eignung auf einen Blick." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://holzpreisvergleich.de/holzarten/" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://holzpreisvergleich.de/holzarten/" />
+  <meta property="og:title"       content="Holzarten & Heizwerte im Vergleich" />
+  <meta property="og:description" content="kWh/fm, Brenndauer, Funkenflug und Eignung aller gängigen Brennholzarten." />
+  <meta property="og:locale"      content="de_DE" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪵</text></svg>" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://holzpreisvergleich.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Holzarten" }
+    ]
+  }
+  </script>
+
+  <style>
+    @font-face { font-family:'Barlow'; font-weight:400; font-display:swap; src:url('/fonts/barlow-400.woff2') format('woff2'); }
+    @font-face { font-family:'Barlow'; font-weight:600; font-display:swap; src:url('/fonts/barlow-600.woff2') format('woff2'); }
+    @font-face { font-family:'Barlow Condensed'; font-weight:700; font-display:swap; src:url('/fonts/barlow-cond-700.woff2') format('woff2'); }
+    @font-face { font-family:'Fira Code'; font-weight:400; font-display:swap; src:url('/fonts/fira-code-400.woff2') format('woff2'); }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+    :root {
+      --pine:#2D4A3E; --pine-d:#1E3329; --pine-text:#B2C9C2;
+      --paper:#F7F4EF; --larch:#C4893A; --larch-d:#8B5E1A; --larch-l:#FDF3E7;
+      --ink:#1A1A18; --ink2:#3D3D3A; --ink3:#6B6B67;
+      --surface:#FFFFFF; --border:#D8D4CC; --border-warm:#E8D5B4;
+      --sans:'Barlow',system-ui,sans-serif; --cond:'Barlow Condensed',sans-serif; --mono:'Fira Code',monospace;
+      --r-sm:4px; --r-md:8px; --r-lg:12px;
+    }
+
+    body { font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--paper); line-height:1.6; }
+    a { color:var(--larch); } a:hover { color:var(--larch-d); }
+    .inner { max-width:760px; margin:0 auto; padding:0 20px; }
+
+    .header { background:var(--pine); padding:14px 0; }
+    .header-inner { display:flex; align-items:center; gap:12px; }
+    .logo-mark { width:32px; height:32px; background:rgba(255,255,255,.12); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .logo-text { font-family:var(--cond); font-weight:700; font-size:18px; color:#fff; }
+    .logo-text span { color:#C4893A; }
+    .logo-sub { font-size:11px; color:var(--pine-text); margin-top:1px; }
+    .back-link { margin-left:auto; font-size:12px; color:var(--pine-text); text-decoration:none; opacity:.8; white-space:nowrap; }
+    .back-link:hover { opacity:1; color:#fff; }
+
+    .breadcrumb { font-size:12px; color:var(--ink3); padding:12px 0 0; }
+    .breadcrumb a { color:var(--ink3); text-decoration:none; }
+    .breadcrumb a:hover { color:var(--larch); }
+    .breadcrumb span { margin:0 5px; }
+
+    main { padding:28px 0 56px; }
+    h1 { font-family:var(--cond); font-size:clamp(22px,5vw,32px); font-weight:700; color:var(--ink); line-height:1.2; margin:20px 0 12px; }
+    .lead { font-size:15px; color:var(--ink2); max-width:62ch; margin-bottom:28px; }
+
+    .tbl-wrap { overflow-x:auto; margin-bottom:24px; border-radius:var(--r-md); border:1px solid var(--border); }
+    table { width:100%; border-collapse:collapse; font-size:13.5px; }
+    thead tr { background:var(--pine); color:#fff; }
+    th { padding:10px 12px; text-align:left; font-weight:600; font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
+    td { padding:10px 12px; border-bottom:1px solid var(--border); color:var(--ink2); }
+    tr:last-child td { border-bottom:none; }
+    tr:hover td { background:var(--surface); }
+    .mono { font-family:var(--mono); font-weight:600; color:var(--ink); }
+    .typ-hart { color:var(--pine); font-weight:600; }
+    .typ-weich { color:var(--larch-d); font-weight:600; }
+
+    .callout { display:flex; gap:12px; background:var(--warn-bg,#FFF0F0); border:1px solid #F5C6C6; border-radius:var(--r-md); padding:14px 16px; font-size:13px; color:var(--ink2); line-height:1.6; margin-bottom:28px; }
+    .callout-icon { flex-shrink:0; font-weight:700; color:#7A2020; }
+
+    .cta-box { background:var(--pine); border-radius:var(--r-lg); padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:40px; }
+    .cta-text { color:#fff; font-size:15px; }
+    .cta-text strong { display:block; font-family:var(--cond); font-size:20px; font-weight:700; margin-bottom:4px; }
+    .cta-btn { display:inline-flex; align-items:center; padding:11px 22px; background:var(--larch); color:#fff; font-weight:600; font-size:14px; border-radius:var(--r-sm); text-decoration:none; white-space:nowrap; flex-shrink:0; }
+    .cta-btn:hover { background:var(--larch-d); color:#fff; }
+
+    .footer { background:var(--pine-d); color:var(--pine-text); padding:16px 0; font-size:11px; text-align:center; letter-spacing:.02em; }
+
+    @media(max-width:520px) { .cta-box { flex-direction:column; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="inner header-inner">
+      <div class="logo-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C9 5.5 7 8 7 11a5 5 0 0010 0c0-3-2-5.5-5-9z" fill="white" fill-opacity=".9"/>
+          <path d="M12 10c-1 2-2 3-2 4.5a2 2 0 004 0C14 13 13 12 12 10z" fill="white" fill-opacity=".5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-text">Holzpreis<span>Vergleich</span></div>
+        <div class="logo-sub">Angebote normalisiert vergleichen</div>
+      </div>
+      <a class="back-link" href="/">← Zum Preisrechner</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="inner">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Startseite</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Holzarten</span>
+      </nav>
+
+      <h1>Holzarten &amp; Heizwerte im Vergleich</h1>
+      <p class="lead">
+        Der Heizwert einer Holzart bestimmt, wie viel Energie pro Festmeter steckt –
+        und beeinflusst damit direkt den fairen Preisvergleich. Hier alle gängigen
+        Brennholzarten mit Heizwert, Brenndauer, Funkenflug und Eignung im Überblick.
+      </p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Holzart</th>
+              <th>Typ</th>
+              <th>kWh/fm</th>
+              <th>Brenndauer</th>
+              <th>Funkenflug</th>
+              <th>Eignung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Hainbuche</strong></td><td class="typ-hart">Hartholz</td><td class="mono">2.300</td><td>Sehr lang</td><td>Gering</td><td>Höchster Heizwert – ideal für Dauerbetrieb</td></tr>
+            <tr><td><strong>Buche</strong></td><td class="typ-hart">Hartholz</td><td class="mono">2.100</td><td>Lang</td><td>Gering</td><td>Universell – ideal für Kaminofen &amp; Kachelofen</td></tr>
+            <tr><td><strong>Eiche</strong></td><td class="typ-hart">Hartholz</td><td class="mono">2.100</td><td>Sehr lang</td><td>Mittel</td><td>Kaminofen, Kachelofen – sehr langsam brennend</td></tr>
+            <tr><td><strong>Esche</strong></td><td class="typ-hart">Hartholz</td><td class="mono">2.000</td><td>Lang</td><td>Gering</td><td>Universell, auch leicht feucht verwendbar</td></tr>
+            <tr><td><strong>Lärche</strong></td><td class="typ-weich">Weichholz</td><td class="mono">1.900</td><td>Mittel</td><td>Mittel</td><td>Kaminofen (nur geschlossen)</td></tr>
+            <tr><td><strong>Birke</strong></td><td class="typ-hart">Hartholz</td><td class="mono">1.900</td><td>Mittel</td><td>Gering</td><td>Universell, schnell anzünden</td></tr>
+            <tr><td><strong>Kiefer</strong></td><td class="typ-weich">Weichholz</td><td class="mono">1.700</td><td>Kurz–Mittel</td><td>Hoch</td><td>Anheizen, geschlossene Öfen</td></tr>
+            <tr><td><strong>Erle</strong></td><td class="typ-hart">Hartholz</td><td class="mono">1.600</td><td>Mittel</td><td>Gering</td><td>Räuchern, Kaminofen</td></tr>
+            <tr><td><strong>Fichte</strong></td><td class="typ-weich">Weichholz</td><td class="mono">1.500</td><td>Kurz</td><td>Hoch</td><td>Anheizen – nicht für offene Kamine</td></tr>
+            <tr><td><strong>Tanne</strong></td><td class="typ-weich">Weichholz</td><td class="mono">1.400</td><td>Kurz</td><td>Sehr hoch</td><td>Nur zum Anheizen</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <span class="callout-icon">⚠</span>
+        <span>
+          Holzarten mit <strong>hohem Funkenflug</strong> (Fichte, Kiefer, Tanne) gehören nur in
+          <strong>geschlossene Kaminöfen</strong>, nicht in offene Kamine.
+        </span>
+      </div>
+
+      <p style="color:var(--ink2);margin-bottom:14px">
+        Der Heizwert allein sagt aber nichts über den Preis – erst im Verhältnis zueinander wird
+        ein Angebot fair vergleichbar. Ein günstiges Fichte-Angebot kann pro kWh teurer sein als
+        teureres Buchenholz. Unser <a href="/">Preisrechner</a> berücksichtigt Holzart und
+        Trockenheitsgrad automatisch beim €/kWh-Vergleich.
+      </p>
+
+      <div class="cta-box">
+        <div class="cta-text">
+          <strong>Konkretes Angebot bekommen?</strong>
+          Geben Sie Ihre Angebote ein – der Rechner normalisiert automatisch auf €/fm und €/kWh.
+        </div>
+        <a class="cta-btn" href="/">Zum Preisrechner →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="inner">
+      © <script>document.write(new Date().getFullYear())</script> holzpreisvergleich.de ·
+      <a href="/" style="color:inherit">Preisrechner</a> ·
+      <a href="/umrechner/" style="color:inherit">Umrechner</a> ·
+      <a href="/ratgeber/" style="color:inherit">Ratgeber</a> ·
+      Angaben ohne Gewähr
+    </div>
+  </footer>
+
+</body>
+</html>

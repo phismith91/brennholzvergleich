@@ -1301,6 +1301,11 @@ export default function App() {
       <footer className="footer" role="contentinfo">
         <div className="footer-inner">
           <span>© {new Date().getFullYear()} holzpreisvergleich.de · Kein Backend, keine Cookies · Angaben ohne Gewähr</span>
+          <nav className="footer-links" aria-label="Weitere Seiten">
+            <a className="footer-link" href="/umrechner/">Umrechner</a>
+            <a className="footer-link" href="/holzarten/">Holzarten</a>
+            <a className="footer-link" href="/ratgeber/">Ratgeber</a>
+          </nav>
           <nav className="footer-links" aria-label="Rechtliches">
             <button className="footer-link" onClick={() => setModal("kontakt")}>Kontakt</button>
             <button className="footer-link" onClick={() => setModal("impressum")}>Impressum</button>
