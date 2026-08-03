@@ -25,12 +25,12 @@ const FEUCHTE = {
   frisch:      { label: "Frisch (> 35 %)",       faktor: 0.60 },
 };
 
-const TAB_IDS = ["rechner", "holzarten", "emissionen", "lieferanten"];
+// ponytail: "lieferanten" Tab pausiert (kein Live-Angebot), Panel-Code bleibt für Reaktivierung
+const TAB_IDS = ["rechner", "holzarten", "emissionen"];
 const TABS = [
   { id: "rechner",     icon: "≡", label: "Angebote vergleichen" },
   { id: "holzarten",   icon: "◈", label: "Holzarten & Heizwerte" },
   { id: "emissionen",  icon: "◉", label: "Emissionen & Klima" },
-  { id: "lieferanten", icon: "◭", label: "Lieferanten finden" },
 ];
 
 // ─── Lieferanten ──────────────────────────────────────────────────────────────
