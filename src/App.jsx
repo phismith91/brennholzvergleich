@@ -459,13 +459,35 @@ export default function App() {
           <div>
             <div className="logo-text" aria-hidden="true">Holzpreis<span>Vergleich</span></div>
             <div className="logo-sub">Angebote normalisiert vergleichen</div>
-            <h1 className="sr-only">HolzpreisVergleich – Brennholz-Angebote fair vergleichen</h1>
           </div>
         </div>
       </header>
 
+      {/* ── Hero ── */}
+      <section className="hero" aria-label="Einführung">
+        <div className="inner hero-inner">
+          <div className="hero-text">
+            <h1 className="hero-h1">Drei Angebote, drei Einheiten, ein fairer Vergleich</h1>
+            <p className="hero-sub">
+              Sie müssen kein Förster sein. Preis, Menge und Holzart eintragen — wir zeigen den
+              echten Preis pro Festmeter und Kilowattstunde.
+            </p>
+            <a className="hero-cta" href="#tabs">Jetzt vergleichen ↓</a>
+            <div className="hero-trust">
+              <span>✓ Kostenlos</span><span>✓ Kein Login</span><span>✓ Kein Tracking</span>
+            </div>
+          </div>
+          <div className="hero-demo" aria-label="Beispiel: drei Angebote in unterschiedlichen Einheiten, normalisiert auf Preis pro Festmeter. Das teuerste Angebot auf dem Zettel ist nach der Umrechnung das günstigste.">
+            <div className="hero-demo-row"><span>420 € · 3 Raummeter Buche</span><span className="hero-demo-result">196 €/fm</span></div>
+            <div className="hero-demo-row"><span>185 € · 1 Festmeter Eiche</span><span className="hero-demo-result">185 €/fm</span></div>
+            <div className="hero-demo-row"><span>270 € · 6 Schüttraummeter Fichte</span><span className="hero-demo-result hero-demo-win">90 €/fm</span></div>
+            <div className="hero-demo-payoff">Der teuerste Zettel war der günstigste Kauf.</div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Tabs ── */}
-      <nav className="tabs" aria-label="Hauptnavigation">
+      <nav className="tabs" aria-label="Hauptnavigation" id="tabs">
         <div className="tabs-inner" role="tablist">
           {TABS.map(t => (
             <button
