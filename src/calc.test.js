@@ -32,6 +32,19 @@ describe('berechneAngebot – Einheiten-Umrechnung', () => {
     const r = berechneAngebot(offer([pos({ menge: '1.5', einheit: 'rm' })]), { rm: '1.5', srm: '2.0' });
     expect(r.totalFm).toBeCloseTo(1, 5);
   });
+
+  it('fällt bei Umrechnungsfaktor "0" auf den Standardwert zurück statt Infinity/0€ zu produzieren', () => {
+    // input hat min="1", verhindert aber kein Freitext-"0" - darf nicht zu 1/0=Infinity -> perFm=0 führen
+    const r = berechneAngebot(offer([pos({ menge: '5', preis: '200', einheit: 'rm' })]), { rm: '0', srm: '2.0' });
+    expect(Number.isFinite(r.totalFm)).toBe(true);
+    expect(r.perFm).toBeGreaterThan(0);
+  });
+
+  it('fällt bei negativem Umrechnungsfaktor auf den Standardwert zurück', () => {
+    const r = berechneAngebot(offer([pos({ menge: '5', preis: '200', einheit: 'srm' })]), { rm: '1.4', srm: '-2' });
+    expect(r.totalFm).toBeGreaterThan(0);
+    expect(r.perFm).toBeGreaterThan(0);
+  });
 });
 
 describe('berechneAngebot – Preis pro fm', () => {

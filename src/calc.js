@@ -18,10 +18,17 @@ const FEUCHTE = {
   frisch:      { label: "Frisch (> 35 %)",       faktor: 0.60 },
 };
 
+// Fällt auf den Default zurück, wenn der Faktor nicht positiv-endlich ist (z.B. "0" oder "-1" getippt,
+// vom <input min="1"> nicht verhindert) - verhindert Division durch 0 -> Infinity -> stiller 0€-Preis.
+function safeFactor(value, fallback) {
+  const n = parseFloat(value);
+  return n > 0 && Number.isFinite(n) ? n : fallback;
+}
+
 // Berechnet ein einzelnes Angebot: Gesamt-fm, Gesamtpreis (inkl. Lieferung), €/fm, €/kWh, Funkenflug-Warnungen.
 // Angebot ohne mindestens eine valide Position (Menge > 0, Preis >= 0) liefert { ok: false }.
 function berechneAngebot(offer, conv) {
-  const fmFaktor = { fm: 1.0, rm: 1 / parseFloat(conv.rm || 1.4), srm: 1 / parseFloat(conv.srm || 2.0) };
+  const fmFaktor = { fm: 1.0, rm: 1 / safeFactor(conv.rm, 1.4), srm: 1 / safeFactor(conv.srm, 2.0) };
   const lief = parseFloat(offer.lieferkosten) || 0;
 
   const posCalc = offer.positionen.map(p => {
