@@ -470,7 +470,7 @@ export default function App() {
             <h1 className="hero-h1">Drei Angebote, drei Einheiten, ein fairer Vergleich</h1>
             <p className="hero-sub">
               Sie müssen kein Förster sein. Preis, Menge und Holzart eintragen — wir zeigen den
-              echten Preis pro Festmeter und Kilowattstunde.
+              echten Preis pro Festmeter.
             </p>
             <a className="hero-cta" href="#tabs">Jetzt vergleichen ↓</a>
             <div className="hero-trust">
