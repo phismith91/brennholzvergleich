@@ -1,29 +1,10 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import './App.css';
+import { HOLZARTEN, FEUCHTE, berechneErgebnisse } from './calc.js';
 
 // ─── Daten ────────────────────────────────────────────────────────────────────
 
-const HOLZARTEN = [
-  { id: "buche",     name: "Buche",      typ: "Hartholz",  heizwert: 2100, brenndauer: "Lang",        funkenflug: "Gering",    geruch: "Neutral",        eignung: "Universell – ideal für Kaminofen & Kachelofen" },
-  { id: "eiche",     name: "Eiche",      typ: "Hartholz",  heizwert: 2100, brenndauer: "Sehr lang",   funkenflug: "Mittel",    geruch: "Leicht würzig",  eignung: "Kaminofen, Kachelofen – sehr langsam brennend" },
-  { id: "esche",     name: "Esche",      typ: "Hartholz",  heizwert: 2000, brenndauer: "Lang",        funkenflug: "Gering",    geruch: "Neutral",        eignung: "Universell, auch leicht feucht verwendbar" },
-  { id: "hainbuche", name: "Hainbuche",  typ: "Hartholz",  heizwert: 2300, brenndauer: "Sehr lang",   funkenflug: "Gering",    geruch: "Neutral",        eignung: "Höchster Heizwert – ideal für Dauerbetrieb" },
-  { id: "birke",     name: "Birke",      typ: "Hartholz",  heizwert: 1900, brenndauer: "Mittel",      funkenflug: "Gering",    geruch: "Leicht süßlich", eignung: "Universell, schnell anzünden" },
-  { id: "erle",      name: "Erle",       typ: "Hartholz",  heizwert: 1600, brenndauer: "Mittel",      funkenflug: "Gering",    geruch: "Angenehm",       eignung: "Räuchern, Kaminofen" },
-  { id: "fichte",    name: "Fichte",     typ: "Weichholz", heizwert: 1500, brenndauer: "Kurz",        funkenflug: "Hoch",      geruch: "Harzig",         eignung: "Anheizen – nicht für offene Kamine" },
-  { id: "kiefer",    name: "Kiefer",     typ: "Weichholz", heizwert: 1700, brenndauer: "Kurz–Mittel", funkenflug: "Hoch",      geruch: "Harzig",         eignung: "Anheizen, geschlossene Öfen" },
-  { id: "laerche",   name: "Lärche",     typ: "Weichholz", heizwert: 1900, brenndauer: "Mittel",      funkenflug: "Mittel",    geruch: "Harzig",         eignung: "Kaminofen (nur geschlossen)" },
-  { id: "tanne",     name: "Tanne",      typ: "Weichholz", heizwert: 1400, brenndauer: "Kurz",        funkenflug: "Sehr hoch", geruch: "Harzig",         eignung: "Nur zum Anheizen" },
-];
-
 const HOLZARTEN_SORTED = [...HOLZARTEN].sort((a, b) => b.heizwert - a.heizwert);
-
-const FEUCHTE = {
-  ofenfertig:  { label: "Ofenfertig (≤ 20 %)",  faktor: 1.00 },
-  trocken:     { label: "Trocken (≤ 25 %)",      faktor: 0.88 },
-  halbtrocken: { label: "Halbtrocken (25–35 %)", faktor: 0.72 },
-  frisch:      { label: "Frisch (> 35 %)",       faktor: 0.60 },
-};
 
 // ponytail: "lieferanten" Tab pausiert (kein Live-Angebot), Panel-Code bleibt für Reaktivierung
 const TAB_IDS = ["rechner", "holzarten", "emissionen"];
@@ -453,44 +434,7 @@ export default function App() {
         : o
     ));
 
-  const results = useMemo(() => {
-    const fmFaktor = { fm: 1.0, rm: 1 / parseFloat(conv.rm || 1.4), srm: 1 / parseFloat(conv.srm || 2.0) };
-
-    return offers.map(o => {
-      const lief = parseFloat(o.lieferkosten) || 0;
-
-      // Jede Position einzeln auswerten
-      const posCalc = o.positionen.map(p => {
-        const menge = parseFloat(p.menge);
-        const preis = parseFloat(p.preis);
-        if (!menge || !preis || menge <= 0 || preis < 0) return null;
-        const fm       = menge * fmFaktor[p.einheit];
-        const holz     = HOLZARTEN.find(h => h.id === p.holzart) ?? null;
-        const feuchFak = FEUCHTE[p.feuchte]?.faktor ?? 1;
-        const kwh      = holz ? holz.heizwert * fm * feuchFak : null;
-        return { ...p, fm, preis, holz, feuchFak, kwh };
-      });
-
-      // Mindestens eine Position muss valide sein
-      const validPos = posCalc.filter(Boolean);
-      if (validPos.length === 0) return { ...o, ok: false };
-
-      const totalFm    = validPos.reduce((s, p) => s + p.fm, 0);
-      const totalPreis = validPos.reduce((s, p) => s + p.preis, 0) + lief;
-      const totalKwh   = validPos.every(p => p.kwh !== null)
-        ? validPos.reduce((s, p) => s + p.kwh, 0)
-        : null;
-
-      const perFm  = totalPreis / totalFm;
-      const perKwh = totalKwh ? totalPreis / totalKwh : null;
-
-      // Funkenflug-Check aller Holzarten
-      const alleHolze = validPos.map(p => p.holz).filter(Boolean);
-      const funkWarn  = alleHolze.filter(h => h.funkenflug === "Hoch" || h.funkenflug === "Sehr hoch");
-
-      return { ...o, ok: true, posCalc: validPos, totalFm, totalPreis, lief, perFm, perKwh, totalKwh, alleHolze, funkWarn };
-    });
-  }, [offers, conv]);
+  const results = useMemo(() => berechneErgebnisse(offers, conv), [offers, conv]);
 
   const valid     = results.filter(r => r.ok);
   const minPerFm  = valid.length ? Math.min(...valid.map(r => r.perFm)) : null;
