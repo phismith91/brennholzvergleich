@@ -5,6 +5,7 @@ import { HOLZARTEN, FEUCHTE, berechneErgebnisse } from './calc.js';
 // ─── Daten ────────────────────────────────────────────────────────────────────
 
 const HOLZARTEN_SORTED = [...HOLZARTEN].sort((a, b) => b.heizwert - a.heizwert);
+const HOLZARTEN_DETAILSEITEN = ["buche", "eiche", "birke", "fichte"];
 
 // ponytail: "lieferanten" Tab pausiert (kein Live-Angebot), Panel-Code bleibt für Reaktivierung
 const TAB_IDS = ["rechner", "holzarten", "emissionen"];
@@ -863,7 +864,12 @@ export default function App() {
                       const funkClass = h.funkenflug === "Gering" ? "funk-gering" : h.funkenflug === "Mittel" ? "funk-mittel" : "funk-hoch";
                       return (
                         <tr key={h.id}>
-                          <td style={{ fontWeight: 700, color: "var(--ink)", fontSize: 14 }}>{h.name}</td>
+                          <td style={{ fontWeight: 700, color: "var(--ink)", fontSize: 14 }}>
+                            {h.name}
+                            {HOLZARTEN_DETAILSEITEN.includes(h.id) && (
+                              <> <a href={`/holzarten/${h.id}/`} style={{ fontSize: 11, fontWeight: 500 }}>Details →</a></>
+                            )}
+                          </td>
                           <td><span className={h.typ === "Hartholz" ? "tag-hart" : "tag-weich"}>{h.typ}</span></td>
                           <td>
                             <span style={{ fontWeight: 700 }}>{h.heizwert.toLocaleString("de-DE")}</span>
