@@ -29,42 +29,10 @@
   }
   </script>
 
+  <link rel="stylesheet" href="/seo-pages.css">
   <style>
-    @font-face { font-family:'Barlow'; font-weight:400; font-display:swap; src:url('/fonts/barlow-400.woff2') format('woff2'); }
-    @font-face { font-family:'Barlow'; font-weight:600; font-display:swap; src:url('/fonts/barlow-600.woff2') format('woff2'); }
-    @font-face { font-family:'Barlow Condensed'; font-weight:700; font-display:swap; src:url('/fonts/barlow-cond-700.woff2') format('woff2'); }
-    @font-face { font-family:'Fira Code'; font-weight:400; font-display:swap; src:url('/fonts/fira-code-400.woff2') format('woff2'); }
+    .inner { max-width:760px; }
 
-    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-
-    :root {
-      --pine:#2D4A3E; --pine-d:#1E3329; --pine-text:#B2C9C2;
-      --paper:#F7F4EF; --larch:#C4893A; --larch-d:#8B5E1A; --larch-l:#FDF3E7;
-      --ink:#1A1A18; --ink2:#3D3D3A; --ink3:#6B6B67;
-      --surface:#FFFFFF; --border:#D8D4CC; --border-warm:#E8D5B4;
-      --sans:'Barlow',system-ui,sans-serif; --cond:'Barlow Condensed',sans-serif; --mono:'Fira Code',monospace;
-      --r-sm:4px; --r-md:8px; --r-lg:12px;
-    }
-
-    body { font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--paper); line-height:1.6; }
-    a { color:var(--larch); } a:hover { color:var(--larch-d); }
-    .inner { max-width:760px; margin:0 auto; padding:0 20px; }
-
-    .header { background:var(--pine); padding:14px 0; }
-    .header-inner { display:flex; align-items:center; gap:12px; }
-    .logo-mark { width:32px; height:32px; background:rgba(255,255,255,.12); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .logo-text { font-family:var(--cond); font-weight:700; font-size:18px; color:#fff; }
-    .logo-text span { color:#C4893A; }
-    .logo-sub { font-size:11px; color:var(--pine-text); margin-top:1px; }
-    .back-link { margin-left:auto; font-size:12px; color:var(--pine-text); text-decoration:none; opacity:.8; white-space:nowrap; }
-    .back-link:hover { opacity:1; color:#fff; }
-
-    .breadcrumb { font-size:12px; color:var(--ink3); padding:12px 0 0; }
-    .breadcrumb a { color:var(--ink3); text-decoration:none; }
-    .breadcrumb a:hover { color:var(--larch); }
-    .breadcrumb span { margin:0 5px; }
-
-    main { padding:28px 0 56px; }
     h1 { font-family:var(--cond); font-size:clamp(22px,5vw,32px); font-weight:700; color:var(--ink); line-height:1.2; margin:20px 0 12px; }
     .lead { font-size:15px; color:var(--ink2); max-width:62ch; margin-bottom:28px; }
 
@@ -81,16 +49,6 @@
 
     .callout { display:flex; gap:12px; background:var(--warn-bg,#FFF0F0); border:1px solid #F5C6C6; border-radius:var(--r-md); padding:14px 16px; font-size:13px; color:var(--ink2); line-height:1.6; margin-bottom:28px; }
     .callout-icon { flex-shrink:0; font-weight:700; color:#7A2020; }
-
-    .cta-box { background:var(--pine); border-radius:var(--r-lg); padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:40px; }
-    .cta-text { color:#fff; font-size:15px; }
-    .cta-text strong { display:block; font-family:var(--cond); font-size:20px; font-weight:700; margin-bottom:4px; }
-    .cta-btn { display:inline-flex; align-items:center; padding:11px 22px; background:var(--larch); color:#fff; font-weight:600; font-size:14px; border-radius:var(--r-sm); text-decoration:none; white-space:nowrap; flex-shrink:0; }
-    .cta-btn:hover { background:var(--larch-d); color:#fff; }
-
-    .footer { background:var(--pine-d); color:var(--pine-text); padding:16px 0; font-size:11px; text-align:center; letter-spacing:.02em; }
-
-    @media(max-width:520px) { .cta-box { flex-direction:column; } }
   </style>
 </head>
 <body>
