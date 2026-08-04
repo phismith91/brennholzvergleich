@@ -370,6 +370,9 @@ export default function App() {
   const [suppliersStatus,  setSuppliersStatus]  = useState("loading"); // loading | ok | error
 
   useEffect(() => {
+    // ponytail: Lieferanten-Tab pausiert (nicht in TAB_IDS) - kein Sinn, bei jedem Seitenaufruf Airtable zu fragen
+    if (!TAB_IDS.includes("lieferanten")) return;
+
     const token  = import.meta.env.VITE_AIRTABLE_TOKEN;
     const baseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
     if (!token || !baseId) { setSuppliersStatus("ok"); return; }
