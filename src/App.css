@@ -147,6 +147,52 @@ html { scroll-behavior: smooth; }
 /* [colorize] logo-sub nutzt pine-text statt slate → 5.8:1 Kontrast auf pine */
 .logo-sub     { font-size: 11px; color: var(--pine-text); margin-top: 2px; font-weight: 400; letter-spacing: 0.02em; }
 
+/* ─── Hero ───────────────────────────────────────────────────────────────────── */
+.hero       { background: var(--paper); border-bottom: 1px solid var(--border); }
+.hero-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--sp-8); align-items: center; padding: var(--sp-10) var(--sp-6); }
+.hero-h1    { font-family: var(--cond); font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.15; color: var(--ink); margin-bottom: var(--sp-3); }
+.hero-sub   { font-size: 15px; color: var(--ink2); line-height: 1.55; max-width: 48ch; margin-bottom: var(--sp-5); }
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--sp-5);
+  background: var(--larch);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+}
+.hero-cta:hover { background: var(--larch-d); }
+.hero-trust { display: flex; gap: var(--sp-4); flex-wrap: wrap; margin-top: var(--sp-4); font-size: 12px; color: var(--ink3); }
+
+.hero-demo {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--sp-4) var(--sp-5);
+}
+.hero-demo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--ink2);
+}
+.hero-demo-row:first-child { padding-top: 0; }
+.hero-demo-row:last-of-type { border-bottom: none; }
+.hero-demo-result { font-family: var(--mono); font-weight: 600; color: var(--ink); white-space: nowrap; }
+.hero-demo-win     { color: var(--pine); }
+.hero-demo-payoff  { margin-top: var(--sp-3); font-size: 12px; color: var(--larch-d); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .hero-inner { grid-template-columns: 1fr; padding: var(--sp-8) var(--sp-6); }
+}
+
 /* ─── Tabs ───────────────────────────────────────────────────────────────────── */
 .tabs       { background: var(--pine-d); border-bottom: 1px solid var(--white-08); position: sticky; top: 52px; z-index: 100; }
 .tabs-inner { display: flex; padding: 0 var(--sp-6); max-width: 1020px; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
