@@ -468,10 +468,10 @@ export default function App() {
       <section className="hero" aria-label="Einführung">
         <div className="inner hero-inner">
           <div className="hero-text">
-            <h1 className="hero-h1">Drei Angebote, drei Einheiten, ein fairer Vergleich</h1>
+            <h1 className="hero-h1">Brennholz im Herbst fair vergleichen</h1>
             <p className="hero-sub">
-              Sie müssen kein Förster sein. Preis, Menge und Holzart eintragen — wir zeigen den
-              echten Preis pro Festmeter.
+              Vor dem Winter noch schnell Angebote checken: Preis, Menge und Holzart eintragen —
+              wir zeigen den echten Preis pro Festmeter und pro Kilowattstunde.
             </p>
             <a className="hero-cta" href="#tabs">Jetzt vergleichen ↓</a>
             <div className="hero-trust">
