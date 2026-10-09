@@ -183,7 +183,7 @@ const mkInitialOffer = () => ({
   id: mkId(),
   label: "",
   lieferkosten: "",
-  positionen: [{ id: mkId(), menge: "1", einheit: "rm", preis: "", holzart: "buche", feuchte: "ofenfertig" }],
+  positionen: [{ ...mkPos(), menge: "1", holzart: "buche" }],
 });
 
 // ─── HolzartSelect ────────────────────────────────────────────────────────────

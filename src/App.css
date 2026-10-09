@@ -537,6 +537,7 @@ select.input {
   align-items: center;
 }
 .btn-text:hover { color: var(--pine); }
+.btn-text:focus-visible { outline: 2px solid var(--larch); outline-offset: 2px; }
 
 /* ─── Affiliate Card ─────────────────────────────────────────────────────────── */
 .affiliate-card {
