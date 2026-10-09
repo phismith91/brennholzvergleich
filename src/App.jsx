@@ -179,6 +179,12 @@ const fmtE = (n)        => n.toLocaleString("de-DE", { style: "currency", curren
 const mkId = () => Math.random().toString(36).slice(2, 9);
 const mkPos = () => ({ id: mkId(), menge: "", einheit: "rm", preis: "", holzart: "", feuchte: "ofenfertig" });
 const mkOffer = () => ({ id: mkId(), label: "", lieferkosten: "", positionen: [mkPos()] });
+const mkInitialOffer = () => ({
+  id: mkId(),
+  label: "",
+  lieferkosten: "",
+  positionen: [{ id: mkId(), menge: "1", einheit: "rm", preis: "", holzart: "buche", feuchte: "ofenfertig" }],
+});
 
 // ─── HolzartSelect ────────────────────────────────────────────────────────────
 
@@ -355,7 +361,7 @@ function Modal({ id, title, onClose, children }) {
 // ─── Hauptkomponente ──────────────────────────────────────────────────────────
 
 export default function App() {
-  const [offers,      setOffers]      = useState(() => [mkOffer(), mkOffer(), mkOffer()]);
+  const [offers,      setOffers]      = useState(() => [mkInitialOffer()]);
   const [tab,         setTab]         = useState("rechner");
   const [showConv,    setShowConv]    = useState(false);
   const [conv,        setConv]        = useState({ rm: "1.4", srm: "2.0" });
@@ -414,6 +420,7 @@ export default function App() {
 
   // Offer-Operationen
   const addOffer = () => { if (offers.length < 5) setOffers(prev => [...prev, mkOffer()]); };
+  const resetOffers = () => setOffers([mkInitialOffer()]);
   const delOffer = (id) => { if (offers.length > 1) setOffers(prev => prev.filter(o => o.id !== id)); };
   const updOfferField = (offerId, field, value) =>
     setOffers(prev => prev.map(o => o.id === offerId ? { ...o, [field]: value } : o));
@@ -620,6 +627,14 @@ export default function App() {
                 <span aria-hidden="true">+</span> Angebot hinzufügen
               </button>
             )}
+            <button
+              className="btn-text"
+              onClick={resetOffers}
+              aria-label="Angebote zurücksetzen"
+              type="button"
+            >
+              Zurücksetzen
+            </button>
             <button
               className="note-toggle"
               onClick={() => setShowConv(!showConv)}
