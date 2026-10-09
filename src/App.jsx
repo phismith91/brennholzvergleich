@@ -374,7 +374,12 @@ export default function App() {
   const [modal,            setModal]            = useState(null); // null | "impressum" | "datenschutz" | "kontakt"
   const [formState,        setFormState]        = useState("idle"); // idle | sending | sent | error
   const [suppliers,        setSuppliers]        = useState(LIEFERANTEN_FALLBACK);
-  const [suppliersStatus,  setSuppliersStatus]  = useState("loading"); // loading | ok | error
+  const [suppliersStatus,  setSuppliersStatus]  = useState(() => {
+    if (!TAB_IDS.includes("lieferanten")) return "ok";
+    const token  = import.meta.env.VITE_AIRTABLE_TOKEN;
+    const baseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
+    return token && baseId ? "loading" : "ok";
+  });
 
   useEffect(() => {
     // ponytail: Lieferanten-Tab pausiert (nicht in TAB_IDS) - kein Sinn, bei jedem Seitenaufruf Airtable zu fragen
@@ -382,7 +387,7 @@ export default function App() {
 
     const token  = import.meta.env.VITE_AIRTABLE_TOKEN;
     const baseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
-    if (!token || !baseId) { setSuppliersStatus("ok"); return; }
+    if (!token || !baseId) return;
 
     fetch(
       `https://api.airtable.com/v0/${baseId}/${AIRTABLE_TABLE}?sort[0][field]=featured&sort[0][direction]=desc`,
@@ -719,7 +724,7 @@ export default function App() {
                               </div>
                               {/* Holzarten-Detail */}
                               <div style={{ fontSize: 11, color: "var(--ink3)", marginTop: 4, lineHeight: 1.6 }}>
-                                {r.posCalc.map((p, pi) => (
+                                {r.posCalc.map((p) => (
                                   <div key={p.id}>
                                     {p.holz ? p.holz.name : "–"}
                                     {' · '}{fmt(p.fm, 2)} fm
