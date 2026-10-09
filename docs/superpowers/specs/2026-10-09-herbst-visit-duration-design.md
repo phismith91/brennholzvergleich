@@ -47,7 +47,7 @@ Aktuell starten drei leere Angebote. Neu startet der Rechner mit **einem einzige
 |------|------|
 | Menge | `1` |
 | Einheit | `rm` (Raummeter) |
-| Preis | leer oder `0` |
+| Preis | leer (bestehender Placeholder „250“ bleibt sichtbar) |
 | Holzart | `buche` |
 | Trockenheit | `ofenfertig` |
 
